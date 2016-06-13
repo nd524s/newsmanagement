@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="username" value="TEST_NIKITA" />
+        <property name="password" value="root" />
+        <property name="initialSize" value="20" />
+        <property name="maxActive" value="30" />
+    </bean>
+
+    <context:annotation-config/>
+    <tx:annotation-driven/>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="tagDAO" class="com.epam.newsmanagement.dao.impl.TagDAOImpl" autowire="constructor"/>
+
+    <bean id="authorDAO" class="com.epam.newsmanagement.dao.impl.AuthorDAOImpl" autowire="constructor"/>
+
+    <bean id="newsDAO" class="com.epam.newsmanagement.dao.impl.NewsDAOImpl" autowire="constructor"/>
+
+    <bean id="commentDAO" class="com.epam.newsmanagement.dao.impl.CommentDAOImpl" autowire="constructor"/>
+
+    <bean id="dbUnitDatabaseConfig" class="com.github.springtestdbunit.bean.DatabaseConfigBean">
+        <property name="datatypeFactory">
+            <bean class="org.dbunit.ext.oracle.OracleDataTypeFactory"/>
+        </property>
+        <property name="caseSensitiveTableNames" value="false"/>
+    </bean>
+
+    <bean id="dbUnitDatabaseConnection" class="com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="databaseConfig" ref="dbUnitDatabaseConfig"/>
+        <property name="schema" value="TEST_NIKITA"/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="newsService" class="com.epam.newsmanagement.service.impl.NewsServiceImpl" autowire="constructor"/>
+
+    <bean id="authorService" class="com.epam.newsmanagement.service.impl.AuthorServiceImpl" autowire="constructor"/>
+
+    <bean id="tagService" class="com.epam.newsmanagement.service.impl.TagServiceImpl" autowire="constructor"/>
+
+    <bean id="commentService" class="com.epam.newsmanagement.service.impl.CommentServiceImpl" autowire="constructor"/>
+</beans>

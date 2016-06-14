@@ -11,6 +11,7 @@ import com.epam.newsmanagement.domain.SearchCriteria;
 import com.epam.newsmanagement.domain.Tag;
 import com.epam.newsmanagement.service.NewsService;
 import com.epam.newsmanagement.service.exception.ServiceException;
+import org.apache.log4j.Logger;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,7 @@ import java.util.ArrayList;
  */
 
 public class NewsServiceImpl implements NewsService {
+    private static final Logger logger = Logger.getLogger(NewsServiceImpl.class);
     private NewsDAO newsDAO;
     private TagDAO tagDAO;
     private AuthorDAO authorDAO;
@@ -42,6 +44,7 @@ public class NewsServiceImpl implements NewsService {
         try {
             newsCount = newsDAO.getNewsCount();
         } catch (DAOException e) {
+            logger.error("Can not count number of news.", e);
             throw new ServiceException(e);
         }
         return newsCount;
@@ -59,6 +62,7 @@ public class NewsServiceImpl implements NewsService {
         try {
             news = newsDAO.getNewsBySearchCriteria(searchCriteria);
         } catch (DAOException e) {
+            logger.error("Can not search by search criteria.", e);
             throw new ServiceException(e);
         }
         return news;
@@ -77,6 +81,7 @@ public class NewsServiceImpl implements NewsService {
                 newsList.add(news);
             }
         } catch (DAOException e) {
+            logger.error("Can not get all news.", e);
             throw new ServiceException(e);
         }
         return newsList;
@@ -92,6 +97,7 @@ public class NewsServiceImpl implements NewsService {
             singleNews.setTags(tagDAO.getNewsTags(newsId));
             singleNews.setComments(commentDAO.getNewsComments(newsId));
         } catch (DAOException e) {
+            logger.error("Can not get single news.", e);
             throw new ServiceException(e);
         }
         return singleNews;
@@ -102,6 +108,7 @@ public class NewsServiceImpl implements NewsService {
         try {
             newsDAO.delete(id);
         } catch (DAOException e) {
+            logger.error("Can not delete news.", e);
             throw new ServiceException(e);
         }
     }
@@ -111,6 +118,7 @@ public class NewsServiceImpl implements NewsService {
         try {
             newsDAO.update(news);
         } catch (DAOException e) {
+            logger.error("Can not update news.", e);
             throw new ServiceException(e);
         }
     }
@@ -124,6 +132,7 @@ public class NewsServiceImpl implements NewsService {
             insertNewsAuthor(news);
             insertNewsTag(news);
         } catch (DAOException e) {
+            logger.error("Can not add news.", e);
             throw new ServiceException(e);
         }
         return newsId;

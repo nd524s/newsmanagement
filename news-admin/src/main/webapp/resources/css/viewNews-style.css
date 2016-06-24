@@ -1,0 +1,54 @@
+.title {
+    margin-left: 30px;
+    max-width: 600px;
+}
+.author {
+    float: left;
+    margin-left: 30px;
+}
+.date {
+    display: inline-block;
+    text-decoration: underline;
+    float: right;
+    margin-right: 30px
+}
+.full-text {
+    padding: 40px;
+}
+.comments {
+    margin-left: 30px;
+    text-decoration: underline;
+}
+.comment {
+    position: relative;
+    margin-left: 35px;
+    margin-right: 400px;
+    background: gainsboro;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+}
+.exit {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.text-area {
+    margin-left: 30px;
+    margin-right: 400px;
+}
+.button {
+    margin-top: 5px;
+    margin-left: 480px;
+    margin-bottom: 70px;
+}
+.previous {
+    font-size: x-large;
+    float: left;
+    margin: 30px;
+}
+.next {
+    margin: 30px;
+    float: right;
+    font-size: x-large;
+}

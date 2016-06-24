@@ -14,4 +14,8 @@
         <put-attribute name="body" value="/WEB-INF/views/body/newsList.jsp"/>
     </definition>
 
+    <definition name="viewNews" extends="news">
+        <put-attribute name="body" value="/WEB-INF/views/body/viewNews.jsp"/>
+    </definition>
+
 </tiles-definitions>

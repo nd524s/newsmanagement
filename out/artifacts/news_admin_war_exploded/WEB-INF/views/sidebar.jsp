@@ -12,7 +12,7 @@
 </head>
 <body>
 <ul>
-    <li><a href="http://localhost:8181/admin/news">News List</a></li>
+    <li><a href="http://localhost:8181/admin/newsList">News List</a></li>
     <li><a href="">Add News</a></li>
     <li><a href="">Add/Update Authors</a></li>
     <li><a href="">Add/Update Tags</a></li>

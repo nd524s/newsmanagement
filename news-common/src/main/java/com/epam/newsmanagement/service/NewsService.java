@@ -17,4 +17,6 @@ public interface NewsService {
     void editNews(News news) throws ServiceException;
     ArrayList<News> searchBySearchCriteria(SearchCriteria searchCriteria) throws ServiceException;
     long getNewsCount() throws ServiceException;
+    News getNextNews(long id) throws ServiceException;
+    News getPreviousNews(long id) throws ServiceException;
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -23,11 +24,13 @@ public class NewsListController {
     @Autowired
     private NewsService newsService;
 
-    @RequestMapping("/news")
-    public ModelAndView first() throws ServiceException {
+    @RequestMapping("/newsList")
+    public ModelAndView showAllNews() throws ServiceException {
         ArrayList<News> newses = newsService.getAllNews();
         ModelAndView modelAndView = new ModelAndView(NEWS_LIST_VIEW);
         modelAndView.addObject(NEWS_ATTRIBUTE, newses);
         return modelAndView;
     }
+
+
 }

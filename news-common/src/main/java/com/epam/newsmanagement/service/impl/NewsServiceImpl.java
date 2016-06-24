@@ -31,6 +31,28 @@ public class NewsServiceImpl implements NewsService {
     public NewsServiceImpl() {
     }
 
+    @Override
+    public News getNextNews(long id) throws ServiceException {
+        ArrayList<News> newsList = getAllNews();
+        for (int i = 0; i < newsList.size(); i++) {
+            if(newsList.get(i).getNewsId() == id && i != newsList.size() - 1) {
+                return newsList.get(i+1);
+            }
+        }
+        return getSingleNews(id);
+    }
+
+    @Override
+    public News getPreviousNews(long id) throws ServiceException {
+        ArrayList<News> newsList = getAllNews();
+        for (int i = 0; i < newsList.size(); i++) {
+            if(newsList.get(i).getNewsId() == id && i != 0) {
+                return newsList.get(i-1);
+            }
+        }
+        return getSingleNews(id);
+    }
+
     public NewsServiceImpl(NewsDAO newsDAO, TagDAO tagDAO, AuthorDAO authorDAO, CommentDAO commentDAO) {
         this.newsDAO = newsDAO;
         this.tagDAO = tagDAO;

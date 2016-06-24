@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    border: 2px solid black;
+}
+.sidebar-position {
+    top: 70px;
+    position: fixed;
+    width: 15%;
+    border: 1px groove ;
+    display: inline-block;
+}
+.content-position {
+    margin-top: 70px;
+    width: 75%;
+    margin-bottom: 50px;
+    border: 1px groove ;
+    display: inline-block;
+}
+.title {
+    max-width: 100px;
+}

@@ -6,4 +6,4 @@
 27 мая 2016 11:31:57.970 DEBUG org.springframework.core.env.PropertySourcesPropertyResolver - Searching for key 'spring.liveBeansView.mbeanDomain' in [systemProperties]
 27 мая 2016 11:31:57.970 DEBUG org.springframework.core.env.PropertySourcesPropertyResolver - Searching for key 'spring.liveBeansView.mbeanDomain' in [systemEnvironment]
 27 мая 2016 11:31:57.971 DEBUG org.springframework.core.env.PropertySourcesPropertyResolver - Could not find key 'spring.liveBeansView.mbeanDomain' in any property source. Returning [null]
-27 мая 2016 11:31:57.977 INFO  com.epam.newsmanagement.Main - Application context created
+27 мая 2016 11:31:57.977 INFO  Main - Application context created

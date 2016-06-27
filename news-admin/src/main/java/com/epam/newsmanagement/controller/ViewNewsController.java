@@ -44,5 +44,5 @@ public class ViewNewsController {
         modelAndView.addObject(SINGLE_NEWS_ATTRIBUTE, news);
         return modelAndView;
     }
-    
+
 }

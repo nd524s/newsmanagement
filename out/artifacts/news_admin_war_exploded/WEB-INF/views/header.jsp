@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="/resources/css/header-style.css">
+    <link rel="stylesheet" href="/resources/css/header.css">
 </head>
 <body>
 
@@ -26,7 +26,5 @@
         <a href="#">RU</a>
     </div>
 </div>
-
-
 </body>
 </html>

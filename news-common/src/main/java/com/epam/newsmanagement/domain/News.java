@@ -49,6 +49,16 @@ public class News extends Entity {
         this.modificationDate = modificationDate;
     }
 
+    public News(String title, String shortText, String fullText, Timestamp creationDate, Timestamp modificationDate, ArrayList<Author> authors, ArrayList<Tag> tags) {
+        this.title = title;
+        this.shortText = shortText;
+        this.fullText = fullText;
+        this.creationDate = creationDate;
+        this.modificationDate = modificationDate;
+        this.authors = authors;
+        this.tags = tags;
+    }
+
     public ArrayList<Comment> getComments() {
         return comments;
     }

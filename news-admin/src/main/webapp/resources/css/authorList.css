@@ -1,0 +1,23 @@
+.author {
+    max-width: 900px;
+    padding-top: 30px;
+    padding-left: 200px;
+}
+.container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+.edit-update {
+    padding-left: 50px;
+}
+.expire-cancel {
+    padding-left: 10px;
+}
+.author-save {
+    max-width: 900px;
+    padding-top: 60px;
+    padding-left: 165px;
+}
+.save-link{
+    padding-left: 50px;
+}

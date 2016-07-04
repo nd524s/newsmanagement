@@ -31,6 +31,13 @@ public class NewsServiceImpl implements NewsService {
     public NewsServiceImpl() {
     }
 
+    public NewsServiceImpl(NewsDAO newsDAO, TagDAO tagDAO, AuthorDAO authorDAO, CommentDAO commentDAO) {
+        this.newsDAO = newsDAO;
+        this.tagDAO = tagDAO;
+        this.authorDAO = authorDAO;
+        this.commentDAO = commentDAO;
+    }
+
     @Override
     public News getNextNews(long id) throws ServiceException {
         ArrayList<News> newsList = getAllNews();
@@ -51,13 +58,6 @@ public class NewsServiceImpl implements NewsService {
             }
         }
         return getSingleNews(id);
-    }
-
-    public NewsServiceImpl(NewsDAO newsDAO, TagDAO tagDAO, AuthorDAO authorDAO, CommentDAO commentDAO) {
-        this.newsDAO = newsDAO;
-        this.tagDAO = tagDAO;
-        this.authorDAO = authorDAO;
-        this.commentDAO = commentDAO;
     }
 
     @Override
@@ -151,8 +151,8 @@ public class NewsServiceImpl implements NewsService {
         Long newsId;
         try {
             newsId = newsDAO.create(news);
-            insertNewsAuthor(news);
-            insertNewsTag(news);
+            insertNewsAuthor(news, newsId);
+            insertNewsTag(news, newsId);
         } catch (DAOException e) {
             logger.error("Can not add news.", e);
             throw new ServiceException(e);
@@ -165,8 +165,7 @@ public class NewsServiceImpl implements NewsService {
      * @param news
      * @throws DAOException
      */
-    private void insertNewsAuthor(News news) throws DAOException {
-        long newsId = news.getNewsId();
+    private void insertNewsAuthor(News news, Long newsId) throws DAOException {
         for (Author author : news.getAuthors()) {
             authorDAO.createNewsAuthor(newsId, author.getAuthorId());
         }
@@ -177,8 +176,7 @@ public class NewsServiceImpl implements NewsService {
      * @param news
      * @throws DAOException
      */
-    private void insertNewsTag(News news) throws DAOException {
-        long newsId = news.getNewsId();
+    private void insertNewsTag(News news, Long newsId) throws DAOException {
         for (Tag tag : news.getTags()) {
             tagDAO.createNewsTag(newsId, tag.getTagId());
         }

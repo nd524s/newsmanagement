@@ -7,6 +7,8 @@ import com.epam.newsmanagement.service.AuthorService;
 import com.epam.newsmanagement.service.exception.ServiceException;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
+
 /**
  * Created by Никита on 6/3/2016.
  */
@@ -19,6 +21,18 @@ public class AuthorServiceImpl implements AuthorService {
 
     public AuthorServiceImpl(AuthorDAO authorDAO) {
         this.authorDAO = authorDAO;
+    }
+
+    @Override
+    public ArrayList<Author> getAllAuthors() throws ServiceException {
+        ArrayList<Author> authors;
+        try {
+            authors = authorDAO.getAllAuthors();
+        } catch (DAOException e) {
+            logger.error("Can not get all authors");
+            throw new ServiceException(e);
+        }
+        return authors;
     }
 
     /**

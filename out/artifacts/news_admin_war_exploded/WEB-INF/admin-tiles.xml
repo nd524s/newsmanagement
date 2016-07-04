@@ -18,4 +18,12 @@
         <put-attribute name="body" value="/WEB-INF/views/body/viewNews.jsp"/>
     </definition>
 
+    <definition name="addNews" extends="news">
+        <put-attribute name="body" value="/WEB-INF/views/body/addNews.jsp"/>
+    </definition>
+
+    <definition name="authorList" extends="news">
+        <put-attribute name="body" value="/WEB-INF/views/body/authorList.jsp"/>
+    </definition>
+
 </tiles-definitions>

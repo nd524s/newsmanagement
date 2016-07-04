@@ -11,4 +11,5 @@ import java.util.ArrayList;
 public interface TagDAO extends GenericDAO<Tag> {
     ArrayList<Tag> getNewsTags(long newsId) throws DAOException;
     void createNewsTag(long newsId, long tagId) throws DAOException;
+    ArrayList<Tag> getAllTags() throws DAOException;
 }

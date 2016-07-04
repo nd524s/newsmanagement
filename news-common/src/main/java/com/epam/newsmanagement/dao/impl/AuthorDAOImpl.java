@@ -20,10 +20,36 @@ public class AuthorDAOImpl implements AuthorDAO {
                                                       " NEWS_AUTHOR N_A ON A.AUTHOR_ID = N_A.AUTHOR_ID WHERE N_A.NEWS_ID=?";
     private static final String SQL_CREATE_NEWS_AUTHOR = "INSERT INTO NEWS_AUTHOR(NEWS_ID,AUTHOR_ID)" +
                                                       " VALUES(?,?)";
+    private static final String SQL_GET_ALL_AUTHORS = "SELECT AUTHOR_ID, AUTHOR_NAME, EXPIRED" +
+                                                    " FROM AUTHOR";
+
     private DataSource dataSource;
 
     public AuthorDAOImpl(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    @Override
+    public ArrayList<Author> getAllAuthors() throws DAOException {
+        Connection connection = DataSourceUtils.getConnection(dataSource);
+        ArrayList<Author> authors = new ArrayList<>();
+
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ALL_AUTHORS);
+            ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                long authorId = resultSet.getLong("AUTHOR_ID");
+                String authorName = resultSet.getString("AUTHOR_NAME");
+                Timestamp expired = resultSet.getTimestamp("EXPIRED");
+                authors.add(new Author(authorId, authorName, expired));
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Can not get all authors", e);
+        }finally {
+            if (connection != null) {
+                DataSourceUtils.releaseConnection(connection, dataSource);
+            }
+        }
+        return authors;
     }
 
     /**

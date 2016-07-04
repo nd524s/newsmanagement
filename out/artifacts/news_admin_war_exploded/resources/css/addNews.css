@@ -1,0 +1,35 @@
+.title {
+    max-width: 900px;
+    padding-top: 30px;
+    padding-left: 50px;
+}
+.date {
+    max-width: 300px;
+    padding-top: 30px;
+    padding-left: 50px;
+}
+.brief {
+    padding-top: 30px;
+    padding-left: 50px;
+}
+textarea {
+    vertical-align: middle;
+}
+.content {
+    padding-top: 30px;
+    padding-left: 32px;
+}
+.dropdown-position {
+    margin-left: 35%;
+    margin-top: 40px;
+    width: 100px;
+    height:25px;
+    margin-bottom: 30px;
+}
+.button-save {
+    padding: 10px 45px;
+}
+.button-position {
+    margin-left: 60%;
+    margin-bottom: 10%;
+}

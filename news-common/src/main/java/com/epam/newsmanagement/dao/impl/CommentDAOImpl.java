@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class CommentDAOImpl implements CommentDAO {
     private static final String SQL_GET_NEWS_COMMENTS = "SELECT COMMENT_ID, NEWS_ID, COMMENT_TEXT," +
-                                                        " CREATION_DATE FROM COMMENTS WHERE NEWS_ID=?";
+                                                        " CREATION_DATE FROM COMMENTS WHERE NEWS_ID=? ORDER BY CREATION_DATE DESC";
     private static final String SQL_CREATE_COMMENT = "INSERT INTO COMMENTS(NEWS_ID,COMMENT_TEXT,CREATION_DATE) VALUES (?,?,?)";
     private static final String SQL_DELETE_COMMENT = "DELETE FROM COMMENTS WHERE COMMENT_ID=?";
     private static final String SQL_GET_COMMENT_BY_ID = "SELECT COMMENT_ID, NEWS_ID, COMMENT_TEXT," +

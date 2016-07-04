@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Single News</title>
-    <link rel="stylesheet" href="/resources/css/viewNews-style.css">
+    <link rel="stylesheet" href="/resources/css/viewNews.css">
 </head>
 <body>
 <div>
@@ -29,21 +29,30 @@
         <span class="comments">
             <fmt:formatDate pattern="dd/MM/yyyy" value="${com.creationDate}"/>
         </span>
-        <div class="comment">
-            <a href="http://localhost:8181/admin/newsList"><img src="/resources/image/exit.jpg" width="20" height="20" class="exit"></a>
-            <c:out value="${com.commentText}"/>
-        </div>
+        <form action="/admin/deleteComment" method="post">
+            <div class="comment">
+                <input type="hidden" name="newsId" value="${news.newsId}">
+                <input type="hidden" name="commentId" value="${com.commentId}">
+                <input type="image" src="/resources/image/exit.jpg" width="20" height="20" class="exit">
+                <c:out value="${com.commentText}"/>
+            </div>
+        </form>
     </c:forEach>
-    <div class="text-area" >
-        <textarea rows="4" cols="80">
+    <div class="text-area">
+        <textarea name="comment" form="postComment" rows="4" cols="80">
         </textarea>
     </div>
+
+    <form id="postComment" action="/admin/postComment" method="post">
+        <input type="hidden" name="newsId" value="${news.newsId}">
+        <div>
+            <input type="submit" class="button" value="Post comment">
+        </div>
+    </form>
+
     <div>
-        <a href="#"><input  type="button" class="button" value="Post comment"></a>
-    </div>
-    <div>
-        <a href="http://localhost:8181/admin/previousNews?id=${news.newsId}" class="previous">Previous</a>
-        <a href="http://localhost:8181/admin/nextNews?id=${news.newsId}" class="next">Next</a>
+        <a href="/admin/previousNews?id=${news.newsId}" class="previous">Previous</a>
+        <a href="/admin/nextNews?id=${news.newsId}" class="next">Next</a>
     </div>
 </div>
 </body>

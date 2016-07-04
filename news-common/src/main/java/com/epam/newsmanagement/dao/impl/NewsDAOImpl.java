@@ -27,7 +27,7 @@ public class NewsDAOImpl implements NewsDAO {
     private static final String SQL_GET_ALL_NEWS = "SELECT N.NEWS_ID, N.TITLE, N.SHORT_TEXT," +
                         " N.FULL_TEXT, N.CREATION_DATE, N.MODIFICATION_DATE, COUNT(C.COMMENT_ID) AS NUM " +
                         "FROM NEWS N LEFT JOIN COMMENTS C ON N.NEWS_ID = C.NEWS_ID GROUP BY" +
-                        " N.NEWS_ID, N.TITLE, N.SHORT_TEXT, N.FULL_TEXT, N.CREATION_DATE, N.MODIFICATION_DATE ORDER BY NUM DESC";
+                        " N.NEWS_ID, N.TITLE, N.SHORT_TEXT, N.FULL_TEXT, N.CREATION_DATE, N.MODIFICATION_DATE ORDER BY NUM DESC,N.MODIFICATION_DATE DESC";
     private static final String SQL_GET_NEWS_COUNT = "SELECT COUNT(*) AS ROW_COUNT FROM NEWS";
     private DataSource dataSource;
 

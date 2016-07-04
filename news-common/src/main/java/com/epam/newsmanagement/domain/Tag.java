@@ -10,6 +10,10 @@ public class Tag extends Entity {
     public Tag() {
     }
 
+    public Tag(Long tagId) {
+        this.tagId = tagId;
+    }
+
     public Tag(Long tagId, String tagName) {
         this.tagId = tagId;
         this.tagName = tagName;

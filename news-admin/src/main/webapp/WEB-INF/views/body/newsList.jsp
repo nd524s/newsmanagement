@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css"
           href="<c:url value="/resources/css/jquery.multiselect.css"/>" />
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/css/newsList-style.css">
+    <link rel="stylesheet" href="/resources/css/newsList.css">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>
@@ -40,7 +40,7 @@
     <c:forEach var="news" items="${newses}" varStatus="newsNumber">
         <div style="margin-top: 40px">
             <div >
-                <span class="title"><a href="http://localhost:8181/admin/viewNews?id=${news.newsId}" ><c:out value="${news.title}"/></a></span>
+                <span class="title"><a href="/admin/viewNews?id=${news.newsId}" ><c:out value="${news.title}"/></a></span>
                 <span class="author">(<c:out value="${news.authors[0].authorName}"/>)</span>
                 <span class="date"><fmt:formatDate pattern="dd/MM/yyyy" value="${news.modificationDate}"/></span>
             </div>

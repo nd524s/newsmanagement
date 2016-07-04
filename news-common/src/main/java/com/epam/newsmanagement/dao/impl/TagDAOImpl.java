@@ -20,13 +20,37 @@ public class TagDAOImpl implements TagDAO {
                                                     " NEWS_TAG N_T ON T.TAG_ID = N_T.TAG_ID WHERE N_T.NEWS_ID=?";
     private static final String SQL_CREATE_NEWS_TAG = "INSERT INTO NEWS_TAG(NEWS_ID, TAG_ID)" +
                                                     " VALUES(?,?)";
+    private static final String SQL_GET_ALL_TAGS = "SELECT TAG_ID, TAG_NAME FROM TAG";
+
     private DataSource dataSource;
 
     public TagDAOImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
-    /**
+    @Override
+    public ArrayList<Tag> getAllTags() throws DAOException {
+        Connection connection = DataSourceUtils.getConnection(dataSource);
+        ArrayList<Tag> tags = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ALL_TAGS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    long tagId = resultSet.getLong("TAG_ID");
+                    String tagName = resultSet.getString("TAG_NAME");
+                    tags.add(new Tag(tagId, tagName));
+                }
+        } catch (SQLException e) {
+            throw new DAOException("Can not get all tags", e);
+        } finally {
+            if (connection != null) {
+                DataSourceUtils.releaseConnection(connection, dataSource);
+            }
+        }
+        return tags;
+    }
+
+        /**
      * Create new record in NEWS_TAG table.
      * @param newsId
      * @param tagId

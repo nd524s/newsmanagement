@@ -11,14 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Никита on 6/27/2016.
@@ -39,7 +36,7 @@ public class AddNewsController {
 
     @ModelAttribute
     public void fillDropDowns(Model model) throws ServiceException {
-        model.addAttribute("authors", authorService.getAllAuthors());
+        model.addAttribute("authors", authorService.getUnexpiredAuthors());
         model.addAttribute("tags", tagService.getAllTags());
     }
 

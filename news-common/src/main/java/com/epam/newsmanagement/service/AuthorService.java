@@ -10,6 +10,8 @@ import java.util.ArrayList;
  */
 public interface AuthorService {
     void addNewsAuthor(long newsId, long authorId) throws ServiceException;
-    Long createAuthor(Author author) throws ServiceException;
+    Long createUpdateAuthor(Author author) throws ServiceException;
     ArrayList<Author> getAllAuthors() throws ServiceException;
+    ArrayList<Author> getUnexpiredAuthors() throws ServiceException;
+
 }

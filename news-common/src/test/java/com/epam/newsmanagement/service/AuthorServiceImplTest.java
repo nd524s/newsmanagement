@@ -46,7 +46,7 @@ public class AuthorServiceImplTest {
     public void createAuthor() throws DAOException, ServiceException {
         Author author = new Author();
         when(authorDAO.create(author)).thenReturn(AUTHOR_ID);
-        long authorId = authorService.createAuthor(author);
+        long authorId = authorService.createUpdateAuthor(author);
         Assert.assertEquals(AUTHOR_ID, authorId);
         verify(authorDAO).create(author);
     }

@@ -20,26 +20,37 @@
         <c:set var="cancel" value="cancel${number.count}"/>
         <c:set var="authorVar" value="authorVar${number.count}"/>
         <c:set var="edit" value="edit${number.count}"/>
+        <c:set var="expireForm" value="expireForm${number.count}"/>
+        <c:set var="updateForm" value="updateForm${number.count}"/>
 
         <div class="author">
-            <label for="${authorVar}">Author:</label>
-            <input type="text" id="${authorVar}" size="60" value="${author.authorName}" disabled>
-            <a href="#"  class="edit-update" id="${update}"style="display: none">update</a>
-            <a href="#"  class="expire-cancel" id="${expire}"style="display: none">expire</a>
-            <a href="#"  class="expire-cancel" id="${cancel}"style="display: none"
+            <form action="/admin/expireAuthor" id="${expireForm}" method="post">
+                <input type="hidden" name="authorId" value="${author.authorId}">
+                <input type="hidden" name="authorName" value="${author.authorName}">
+            </form>
+            <form action="/admin/updateAuthor" id="${updateForm}" method="post" style="display: inline">
+                <label for="${authorVar}">Author:</label>
+                <input type="text" name="authorName" id="${authorVar}" size="60" value="${author.authorName}" disabled>
+                <input type="hidden" name="authorId" value="${author.authorId}">
+                <input type="hidden" name="expired" value="${author.expired}">
+            </form>
+            <button type="submit" form="${updateForm}" class="edit-update" id="${update}"style="display: none">update</button>
+            <button type="submit" form="${expireForm}" class="expire-cancel" id="${expire}"style="display: none">expire</button>
+
+            <button href="#"  class="expire-cancel" id="${cancel}"style="display: none"
                onclick="this.style.display = 'none';
                        getElementById('${update}').style.display = 'none';
                        getElementById('${expire}').style.display = 'none';
                        getElementById('${edit}').style.display = 'inline';
                        getElementById('${authorVar}').disabled = true;
-                       return false;">cancel</a>
+                       return false;">cancel</button>
 
-            <a href="#" class="edit-update" id="${edit}" onclick="this.style.display = 'none';
+            <button class="edit-update" id="${edit}" onclick="this.style.display = 'none';
                     getElementById('${update}').style.display = 'inline';
                     getElementById('${expire}').style.display = 'inline';
                     getElementById('${cancel}').style.display = 'inline';
                     getElementById('${authorVar}').disabled = false;
-                    return false;">edit</a>
+                    return false;">edit</button>
         </div>
     </c:forEach>
     <div class="author-save">

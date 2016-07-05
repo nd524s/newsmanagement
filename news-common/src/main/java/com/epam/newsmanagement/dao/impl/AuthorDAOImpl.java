@@ -22,6 +22,8 @@ public class AuthorDAOImpl implements AuthorDAO {
                                                       " VALUES(?,?)";
     private static final String SQL_GET_ALL_AUTHORS = "SELECT AUTHOR_ID, AUTHOR_NAME, EXPIRED" +
                                                     " FROM AUTHOR";
+    private static final String SQL_UPDATE_AUTHOR = "UPDATE AUTHOR SET AUTHOR_NAME=?, EXPIRED=?" +
+                                                    " WHERE AUTHOR_ID=?";
 
     private DataSource dataSource;
 
@@ -134,8 +136,20 @@ public class AuthorDAOImpl implements AuthorDAO {
     }
 
     @Override
-    public void update(Author item) {
-
+    public void update(Author item) throws DAOException {
+        Connection connection = DataSourceUtils.getConnection(dataSource);
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_AUTHOR)) {
+            preparedStatement.setString(1, item.getAuthorName());
+            preparedStatement.setTimestamp(2, item.getExpired());
+            preparedStatement.setLong(3, item.getAuthorId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("Can not update current author: ", e);
+        } finally {
+            if (connection != null) {
+                DataSourceUtils.releaseConnection(connection, dataSource);
+            }
+        }
     }
 
     @Override

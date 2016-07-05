@@ -17,6 +17,11 @@ public class Author extends Entity {
         this.authorId = authorId;
     }
 
+    public Author(Long authorId, String authorName) {
+        this.authorId = authorId;
+        this.authorName = authorName;
+    }
+
     public Author(String authorName, Timestamp expired) {
         this.authorName = authorName;
         this.expired = expired;

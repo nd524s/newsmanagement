@@ -6,6 +6,7 @@ import com.epam.newsmanagement.domain.Author;
 import com.epam.newsmanagement.service.AuthorService;
 import com.epam.newsmanagement.service.exception.ServiceException;
 import org.apache.log4j.Logger;
+import org.xml.sax.SAXException;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,18 @@ public class AuthorServiceImpl implements AuthorService {
         return authors;
     }
 
+    @Override
+    public ArrayList<Author> getUnexpiredAuthors() throws ServiceException {
+        ArrayList<Author> unexpireAuthors = new ArrayList<>();
+        ArrayList<Author> allAuthors = getAllAuthors();
+        for(Author author : allAuthors) {
+            if(author.getExpired() == null) {
+                unexpireAuthors.add(author);
+            }
+        }
+        return unexpireAuthors;
+    }
+
     /**
      * Create author for current news.
      * @param newsId
@@ -52,14 +65,25 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Long createAuthor(Author author) throws ServiceException {
+    public Long createUpdateAuthor(Author author) throws ServiceException {
         Long authorId;
-        try {
-            authorId = authorDAO.create(author);
-        } catch (DAOException e) {
-            logger.error("Can not create author.", e);
-            throw new ServiceException(e);
+        if (author.getAuthorId() == null) {
+            try {
+                authorId = authorDAO.create(author);
+            } catch (DAOException e) {
+                logger.error("Can not create author");
+                throw new ServiceException(e);
+            }
+        } else {
+            try {
+                authorDAO.update(author);
+            } catch (DAOException e) {
+                logger.error("Can not update author");
+                throw new ServiceException(e);
+            }
+            authorId = author.getAuthorId();
         }
         return authorId;
     }
+
 }

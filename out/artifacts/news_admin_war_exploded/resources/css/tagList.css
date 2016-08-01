@@ -1,0 +1,34 @@
+.container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+.tag {
+    max-width: 900px;
+    padding-top: 30px;
+    padding-left: 200px;
+}
+.edit-update {
+    padding-left: 50px;
+}
+.delete-cancel {
+    padding-left: 10px;
+}
+.tag-save {
+    max-width: 900px;
+    padding-top: 60px;
+    padding-left: 167px;
+}
+.save-link{
+    padding-left: 50px;
+}
+button {
+    background:none!important;
+    border:none;
+    padding:0!important;
+
+    /*optional*/
+    font-family:arial,sans-serif; /*input has OS specific font-family*/
+    color:#069;
+    text-decoration:underline;
+    cursor:pointer;
+}

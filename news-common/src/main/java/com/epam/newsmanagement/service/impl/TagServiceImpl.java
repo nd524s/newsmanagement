@@ -24,6 +24,39 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    public Long createUpdateTag(Tag tag) throws ServiceException {
+        Long tagId;
+
+        if(tag.getTagId() == null) {
+            try {
+                tagId = tagDAO.create(tag);
+            } catch (DAOException e) {
+                logger.error("Can not create tag", e);
+                throw new ServiceException(e);
+            }
+        } else {
+            try {
+                tagDAO.update(tag);
+            } catch (DAOException e) {
+                logger.error("Can not update tag", e);
+                throw new ServiceException("Can not update tag", e);
+            }
+            tagId = tag.getTagId();
+        }
+        return tagId;
+    }
+
+    @Override
+    public void deleteTag(long id) throws ServiceException {
+        try {
+            tagDAO.delete(id);
+        } catch (DAOException e) {
+            logger.error("Can not delete tag", e);
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public ArrayList<Tag> getAllTags() throws ServiceException {
         ArrayList<Tag> tags;
         try {

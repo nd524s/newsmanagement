@@ -3,6 +3,7 @@ package com.epam.newsmanagement.dao.impl;
 import com.epam.newsmanagement.dao.TagDAO;
 import com.epam.newsmanagement.dao.exception.DAOException;
 import com.epam.newsmanagement.domain.Tag;
+import oracle.jdbc.proxy.annotation.Pre;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 
 import javax.sql.DataSource;
@@ -21,6 +22,9 @@ public class TagDAOImpl implements TagDAO {
     private static final String SQL_CREATE_NEWS_TAG = "INSERT INTO NEWS_TAG(NEWS_ID, TAG_ID)" +
                                                     " VALUES(?,?)";
     private static final String SQL_GET_ALL_TAGS = "SELECT TAG_ID, TAG_NAME FROM TAG";
+    private static final String SQL_DELETE_TAG = "DELETE FROM TAG WHERE TAG_ID=?";
+    private static final String SQL_UPDATE_TAG = "UPDATE TAG SET TAG_NAME=? WHERE TAG_ID=?";
+    private static final String SQL_CREATE_TAG = "INSERT INTO TAG(TAG_NAME) VALUES(?)";
 
     private DataSource dataSource;
 
@@ -98,7 +102,24 @@ public class TagDAOImpl implements TagDAO {
 
     @Override
     public Long create(Tag item) throws DAOException {
-        return null;
+        Long tagId = null;
+        Connection connection = DataSourceUtils.getConnection(dataSource);
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_CREATE_TAG, new String[] { "TAG_ID" })) {
+            preparedStatement.setString(1, item.getTagName());
+            preparedStatement.executeUpdate();
+            try(ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys != null && generatedKeys.next()) {
+                    tagId = generatedKeys.getLong(1);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Can not create tag: ", e);
+        } finally {
+            if (connection != null) {
+                DataSourceUtils.releaseConnection(connection, dataSource);
+            }
+        }
+        return tagId;
     }
 
     @Override
@@ -108,11 +129,33 @@ public class TagDAOImpl implements TagDAO {
 
     @Override
     public void update(Tag item) throws DAOException {
-
+        Connection connection = DataSourceUtils.getConnection(dataSource);
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_TAG)) {
+            preparedStatement.setString(1, item.getTagName());
+            preparedStatement.setLong(2, item.getTagId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("Can not update tag: ", e);
+        } finally {
+            if (connection != null) {
+                DataSourceUtils.releaseConnection(connection, dataSource);
+            }
+        }
     }
 
     @Override
     public void delete(long id) throws DAOException {
+        Connection connection = DataSourceUtils.getConnection(dataSource);
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_TAG)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("Can not delete tag by id");
+        } finally {
+            if (connection != null) {
+                DataSourceUtils.releaseConnection(connection, dataSource);
+            }
+        }
 
     }
 }

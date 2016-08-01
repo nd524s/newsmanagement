@@ -14,6 +14,10 @@ public class Tag extends Entity {
         this.tagId = tagId;
     }
 
+    public Tag(String tagName) {
+        this.tagName = tagName;
+    }
+
     public Tag(Long tagId, String tagName) {
         this.tagId = tagId;
         this.tagName = tagName;

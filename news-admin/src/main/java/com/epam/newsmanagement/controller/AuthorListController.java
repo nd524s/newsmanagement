@@ -64,4 +64,14 @@ public class AuthorListController {
         ModelAndView modelAndView = new ModelAndView(AUTHOR_LIST_VIEW, AUTHORS_ATTRIBUTE, unexpiredAuthors);
         return modelAndView;
     }
+
+    @RequestMapping("/saveAuthor")
+    public ModelAndView createAuthor(HttpServletRequest request) throws ServiceException {
+        String authorName = request.getParameter(AUTHOR_NAME_PARAMETER);
+        Author author = new Author(authorName);
+        authorService.createUpdateAuthor(author);
+        ArrayList<Author> unexpiredAuthors = authorService.getUnexpiredAuthors();
+        ModelAndView modelAndView = new ModelAndView(AUTHOR_LIST_VIEW, AUTHORS_ATTRIBUTE, unexpiredAuthors);
+        return modelAndView;
+    }
 }

@@ -54,9 +54,11 @@
         </div>
     </c:forEach>
     <div class="author-save">
-        <label for="save">Add Author:</label>
-        <input type="text" id="save" size="60">
-        <a href="#" class="save-link">save</a>
+        <form action="/admin/saveAuthor" id="saveForm" method="post">
+            <label for="save">Add Author:</label>
+            <input type="text" id="save" name="authorName" size="60">
+            <button type="submit" form="saveForm" class="save-link">save</button>
+        </form>
     </div>
 </div>
 </body>

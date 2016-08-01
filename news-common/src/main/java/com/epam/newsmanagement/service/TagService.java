@@ -11,4 +11,6 @@ import java.util.ArrayList;
 public interface TagService {
     void addNewsTag(long newsId, long tagId) throws ServiceException;
     ArrayList<Tag> getAllTags() throws ServiceException;
+    void deleteTag(long id) throws ServiceException;
+    Long createUpdateTag(Tag tag) throws ServiceException;
 }

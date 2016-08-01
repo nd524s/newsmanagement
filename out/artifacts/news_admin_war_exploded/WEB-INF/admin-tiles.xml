@@ -26,4 +26,7 @@
         <put-attribute name="body" value="/WEB-INF/views/body/authorList.jsp"/>
     </definition>
 
+    <definition name="tagList" extends="news">
+        <put-attribute name="body" value="/WEB-INF/views/body/tagList.jsp"/>
+    </definition>
 </tiles-definitions>

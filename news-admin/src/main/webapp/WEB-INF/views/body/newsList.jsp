@@ -64,7 +64,7 @@
                 </div>
                 <div class="comments">Comments(${fn:length(news.comments)})</div>
                 <div class="edit">
-                    <a href="" style="color: red" >Edit</a>
+                    <a href="/admin/editNews?id=${news.newsId}">Edit</a>
                 </div>
                 <input type="checkbox" value="a2">
             </div>

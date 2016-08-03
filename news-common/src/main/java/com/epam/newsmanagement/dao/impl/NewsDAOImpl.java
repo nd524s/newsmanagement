@@ -20,7 +20,7 @@ public class NewsDAOImpl implements NewsDAO {
     private static final String SQL_CREATE_NEWS = "INSERT INTO NEWS(TITLE, SHORT_TEXT," +
                        " FULL_TEXT, CREATION_DATE, MODIFICATION_DATE) VALUES(?,?,?,?,?)";
     private static final String SQL_UPDATE_NEWS = "UPDATE NEWS SET TITLE=?, SHORT_TEXT=?, " +
-                        "FULL_TEXT=?, CREATION_DATE=?, MODIFICATION_DATE=? WHERE NEWS_ID=?";
+                        "FULL_TEXT=? WHERE NEWS_ID=?";
     private static final String SQL_DELETE_NEWS = "DELETE FROM NEWS WHERE NEWS_ID=?";
     private static final String SQL_GET_NEWS_BY_ID = "SELECT NEWS_ID, TITLE, SHORT_TEXT," +
                         " FULL_TEXT, CREATION_DATE, MODIFICATION_DATE FROM NEWS WHERE NEWS_ID=?";
@@ -212,9 +212,7 @@ public class NewsDAOImpl implements NewsDAO {
             preparedStatement.setString(1, item.getTitle());
             preparedStatement.setString(2, item.getShortText());
             preparedStatement.setString(3, item.getFullText());
-            preparedStatement.setTimestamp(4, item.getCreationDate());
-            preparedStatement.setTimestamp(5, item.getModificationDate());
-            preparedStatement.setLong(6, item.getNewsId());
+            preparedStatement.setLong(4, item.getNewsId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new DAOException("Can not update news: ", e);

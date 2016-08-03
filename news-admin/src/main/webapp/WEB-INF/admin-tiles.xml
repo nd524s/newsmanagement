@@ -29,4 +29,8 @@
     <definition name="tagList" extends="news">
         <put-attribute name="body" value="/WEB-INF/views/body/tagList.jsp"/>
     </definition>
+
+    <definition name="editNews" extends="news">
+        <put-attribute name="body" value="/WEB-INF/views/body/editNews.jsp"/>
+    </definition>
 </tiles-definitions>

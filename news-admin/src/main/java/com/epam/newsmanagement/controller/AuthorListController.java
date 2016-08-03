@@ -27,7 +27,6 @@ public class AuthorListController {
     private static final String AUTHOR_LIST_VIEW = "authorList";
     private static final String AUTHORS_ATTRIBUTE = "authors";
     private static final String AUTHOR_ID_PARAMETER = "authorId";
-    private static final String EXPIRED_PARAMETER = "expired";
     private static final String AUTHOR_NAME_PARAMETER = "authorName";
 
     @Autowired

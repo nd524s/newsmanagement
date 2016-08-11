@@ -1,0 +1,52 @@
+
+.dropdown-position {
+    margin-left: 35%;
+    margin-top: 40px;
+    width: 100px;
+    height:25px;
+    margin-bottom: 30px;
+}
+.pagination {
+    margin-top: 60px;
+    bottom: 0;
+    width: auto;
+    height: 60px;
+    background: #b2b2b2;
+}
+.title {
+    max-width: 600px;
+    padding-left: 30px;
+    display: block;
+}
+.author {
+    float: right;
+    margin-right: 20px;
+    padding-left: 40px;
+    display: block;
+
+}
+.date {
+    float: right;
+    margin-right: 20px;
+    padding-left: 20px;
+    display: block;
+}
+.short-text {
+    max-width: 900px;
+    padding-left: 30px;
+    padding-top: 20px;
+}
+.tags {
+    padding-top: 20px;
+    padding-left: 600px;
+    width: 150px;
+    display: inline-block;
+    color: grey;
+}
+.comments {
+    display: inline-block;
+    color: red;
+}
+.view {
+    display: inline-block;
+}

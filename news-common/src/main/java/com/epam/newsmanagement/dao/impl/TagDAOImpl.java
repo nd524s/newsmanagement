@@ -25,6 +25,7 @@ public class TagDAOImpl implements TagDAO {
     private static final String SQL_DELETE_TAG = "DELETE FROM TAG WHERE TAG_ID=?";
     private static final String SQL_UPDATE_TAG = "UPDATE TAG SET TAG_NAME=? WHERE TAG_ID=?";
     private static final String SQL_CREATE_TAG = "INSERT INTO TAG(TAG_NAME) VALUES(?)";
+    private static final String SQL_DELETE_NEWS_TAG = "DELETE FROM NEWS_TAG WHERE NEWS_ID=?";
 
     private DataSource dataSource;
 
@@ -144,18 +145,32 @@ public class TagDAOImpl implements TagDAO {
     }
 
     @Override
+    public void deleteNewsTag(long id) throws DAOException {
+        Connection connection = DataSourceUtils.getConnection(dataSource);
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_NEWS_TAG)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("Can not delete from NEWS_TAG: ", e);
+        } finally {
+            if (connection != null) {
+                DataSourceUtils.releaseConnection(connection, dataSource);
+            }
+        }
+    }
+
+    @Override
     public void delete(long id) throws DAOException {
         Connection connection = DataSourceUtils.getConnection(dataSource);
         try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_TAG)) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new DAOException("Can not delete tag by id");
+            throw new DAOException("Can not delete tag by id: ", e);
         } finally {
             if (connection != null) {
                 DataSourceUtils.releaseConnection(connection, dataSource);
             }
         }
-
     }
 }

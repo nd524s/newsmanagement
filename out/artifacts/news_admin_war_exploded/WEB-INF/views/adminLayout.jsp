@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="/resources/css/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout.css">
 </head>
 <body>
 <header>

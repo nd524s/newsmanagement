@@ -79,15 +79,21 @@ public class NewsServiceImpl implements NewsService {
      * @throws ServiceException
      */
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = ServiceException.class)
     public ArrayList<News> searchBySearchCriteria(SearchCriteria searchCriteria) throws ServiceException {
-        ArrayList<News> news;
+        ArrayList<News> newsList = new ArrayList<>();
         try {
-            news = newsDAO.getNewsBySearchCriteria(searchCriteria);
+            for (News news : newsDAO.getNewsBySearchCriteria(searchCriteria)) {
+                news.setAuthors(authorDAO.getNewsAuthor(news.getNewsId()));
+                news.setTags(tagDAO.getNewsTags(news.getNewsId()));
+                news.setComments(commentDAO.getNewsComments(news.getNewsId()));
+                newsList.add(news);
+            }
         } catch (DAOException e) {
-            logger.error("Can not search by search criteria.", e);
+            logger.error("Can not get news by search criteria", e);
             throw new ServiceException(e);
         }
-        return news;
+        return newsList;
     }
 
 
@@ -136,9 +142,15 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = ServiceException.class)
     public void editNews(News news) throws ServiceException {
+        Long newsId = news.getNewsId();
         try {
             newsDAO.update(news);
+            authorDAO.deleteNewsAuthor(newsId);
+            tagDAO.deleteNewsTag(newsId);
+            insertNewsAuthor(news, newsId);
+            insertNewsTag(news, newsId);
         } catch (DAOException e) {
             logger.error("Can not update news.", e);
             throw new ServiceException(e);

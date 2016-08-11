@@ -1,3 +1,4 @@
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%--
   Created by IntelliJ IDEA.
   User: Никита
@@ -11,6 +12,6 @@
     <title>Title</title>
 </head>
 <body>
-
+<tiles:insertDefinition name="singleNews" />
 </body>
 </html>

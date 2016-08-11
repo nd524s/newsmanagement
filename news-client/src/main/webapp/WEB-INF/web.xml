@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <!--<context-param>-->
-        <!--<param-name>org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG</param-name>-->
-        <!--<param-value>/WEB-INF/client-tiles.xml</param-value>-->
-    <!--</context-param>-->
+    <context-param>
+        <param-name>org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG</param-name>
+        <param-value>/WEB-INF/client-tiles.xml</param-value>
+    </context-param>
 
-    <!--<listener>-->
-        <!--<listener-class>org.apache.tiles.web.startup.TilesListener</listener-class>-->
-    <!--</listener>-->
+    <listener>
+        <listener-class>org.apache.tiles.web.startup.TilesListener</listener-class>
+    </listener>
 
     <!--<servlet>-->
         <!--<servlet-name>tiles</servlet-name>-->

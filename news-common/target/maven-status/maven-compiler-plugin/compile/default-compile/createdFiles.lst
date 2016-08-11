@@ -2,6 +2,7 @@ com\epam\newsmanagement\service\TagService.class
 com\epam\newsmanagement\dao\NewsDAO.class
 com\epam\newsmanagement\domain\Author.class
 com\epam\newsmanagement\service\CommentService.class
+com\epam\newsmanagement\domain\NewsTransferObject.class
 com\epam\newsmanagement\domain\News.class
 com\epam\newsmanagement\service\AuthorService.class
 com\epam\newsmanagement\dao\AuthorDAO.class

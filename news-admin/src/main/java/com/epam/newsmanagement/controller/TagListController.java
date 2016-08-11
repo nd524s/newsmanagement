@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * Created by Никита on 8/1/2016.
  */
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/")
 public class TagListController {
     private static final String TAGS_ATTRIBUTE = "tags";
     private static final String TAGS_LIST_VIEW = "tagList";

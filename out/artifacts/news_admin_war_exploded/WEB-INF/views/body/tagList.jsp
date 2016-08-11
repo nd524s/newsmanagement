@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="/resources/css/tagList.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/tagList.css">
 </head>
 <body>
 <div class="container">

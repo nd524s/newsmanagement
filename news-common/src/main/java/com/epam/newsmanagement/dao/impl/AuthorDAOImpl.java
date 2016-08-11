@@ -24,11 +24,27 @@ public class AuthorDAOImpl implements AuthorDAO {
                                                     " FROM AUTHOR";
     private static final String SQL_UPDATE_AUTHOR = "UPDATE AUTHOR SET AUTHOR_NAME=?, EXPIRED=?" +
                                                     " WHERE AUTHOR_ID=?";
+    private static final String SQL_DELETE_NEWS_AUTHOR = "DELETE FROM NEWS_AUTHOR WHERE NEWS_ID=?";
 
     private DataSource dataSource;
 
     public AuthorDAOImpl(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    @Override
+    public void deleteNewsAuthor(long id) throws DAOException {
+        Connection connection = DataSourceUtils.getConnection(dataSource);
+        try(PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_NEWS_AUTHOR)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DAOException("Can not delete from NEWS_AUTHOR: ", e);
+        } finally {
+            if (connection != null) {
+                DataSourceUtils.releaseConnection(connection, dataSource);
+            }
+        }
     }
 
     @Override

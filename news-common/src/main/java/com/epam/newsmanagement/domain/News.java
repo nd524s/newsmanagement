@@ -20,11 +20,14 @@ public class News extends Entity {
     public News() {
     }
 
-    public News(Long newsId, String title, String shortText, String fullText) {
+    public News(Long newsId, String title, String shortText, String fullText, Timestamp modificationDate, ArrayList<Author> authors, ArrayList<Tag> tags) {
         this.newsId = newsId;
         this.title = title;
         this.shortText = shortText;
         this.fullText = fullText;
+        this.modificationDate = modificationDate;
+        this.authors = authors;
+        this.tags = tags;
     }
 
     public News(String title, String shortText, String fullText, Timestamp creationDate, Timestamp modificationDate) {

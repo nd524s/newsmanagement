@@ -22,7 +22,7 @@ import java.util.Map;
  * Created by Никита on 7/4/2016.
  */
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/")
 public class AuthorListController {
     private static final String AUTHOR_LIST_VIEW = "authorList";
     private static final String AUTHORS_ATTRIBUTE = "authors";

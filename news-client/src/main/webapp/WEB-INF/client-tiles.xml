@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
-        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
-        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-    <definition name="news" template="views/clientLayout.jsp">
-        <put-attribute name="header" value="views/header.jsp"/>
+    <definition name="news" template="/WEB-INF/views/clientLayout.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
         <put-attribute name="body" value=""/>
-        <put-attribute name="footer" value="views/footer.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
 
     <definition name="newsList" extends="news">
-        <put-attribute name="body" value="views/newsListBody.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/body/newsListBody.jsp"/>
     </definition>
     
     <definition name="singleNews" extends="news">
-        <put-attribute name="body" value="views/singleNewsBody.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/body/singleNewsBody.jsp"/>
     </definition>
 </tiles-definitions>

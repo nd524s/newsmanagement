@@ -20,7 +20,7 @@ import java.util.Date;
  * Created by Никита on 6/24/2016.
  */
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/")
 public class ViewNewsController {
     private static final String SINGLE_NEWS_VIEW = "viewNews";
     private static final String SINGLE_NEWS_ATTRIBUTE = "news";

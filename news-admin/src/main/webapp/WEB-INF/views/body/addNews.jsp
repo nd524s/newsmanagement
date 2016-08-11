@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css"
           href="<c:url value="/resources/css/jquery.multiselect.css"/>" />
     <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/css/addNews.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/addNews.css">
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>

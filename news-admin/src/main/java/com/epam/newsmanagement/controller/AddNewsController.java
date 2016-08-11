@@ -21,23 +21,25 @@ import java.util.Date;
  * Created by Никита on 6/27/2016.
  */
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/")
 public class AddNewsController {
     private static final String SINGLE_NEWS_VIEW = "viewNews";
     private static final String SINGLE_NEWS_ATTRIBUTE = "news";
+    private static final String AUTHORS_ATTRIBUTE = "authors";
+    private static final String TAGS_ATTRIBUTE = "tags";
     private static final String ADD_NEWS_VIEW = "addNews";
 
     @Autowired
-    public NewsService newsService;
+    private NewsService newsService;
     @Autowired
-    public AuthorService authorService;
+    private AuthorService authorService;
     @Autowired
-    public TagService tagService;
+    private TagService tagService;
 
     @ModelAttribute
     public void fillDropDowns(Model model) throws ServiceException {
-        model.addAttribute("authors", authorService.getUnexpiredAuthors());
-        model.addAttribute("tags", tagService.getAllTags());
+        model.addAttribute(AUTHORS_ATTRIBUTE, authorService.getUnexpiredAuthors());
+        model.addAttribute(TAGS_ATTRIBUTE, tagService.getAllTags());
     }
 
     @RequestMapping(value = "/saveNews", method = RequestMethod.POST)

@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    border: 2px solid black;
+}
+
+.content-position {
+    margin: 70px 5% 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+    border: 1px groove ;
+    display: inline-block;
+}
+.title {
+    max-width: 100px;
+}

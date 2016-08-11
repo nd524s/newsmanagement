@@ -11,7 +11,7 @@
 <html>
 <head>
     <title>Single News</title>
-    <link rel="stylesheet" href="/resources/css/viewNews.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/viewNews.css">
 </head>
 <body>
 <div>
@@ -33,7 +33,7 @@
             <div class="comment">
                 <input type="hidden" name="newsId" value="${news.newsId}">
                 <input type="hidden" name="commentId" value="${com.commentId}">
-                <input type="image" src="/resources/image/exit.jpg" width="20" height="20" class="exit">
+                <input type="image" src="${pageContext.request.contextPath}/resources/image/exit.jpg" width="20" height="20" class="exit">
                 <c:out value="${com.commentText}"/>
             </div>
         </form>

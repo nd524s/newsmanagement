@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="/resources/css/authorList.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/authorList.css">
 </head>
 <body>
 <div class="container">

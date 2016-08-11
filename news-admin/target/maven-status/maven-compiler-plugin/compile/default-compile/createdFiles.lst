@@ -1,1 +1,6 @@
+com\epam\newsmanagement\controller\EditNewsController.class
+com\epam\newsmanagement\controller\TagListController.class
+com\epam\newsmanagement\controller\AddNewsController.class
+com\epam\newsmanagement\controller\AuthorListController.class
 com\epam\newsmanagement\controller\NewsListController.class
+com\epam\newsmanagement\controller\ViewNewsController.class

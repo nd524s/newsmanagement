@@ -8,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Title</title>
@@ -15,7 +16,7 @@
 </head>
 <body>
 
-<a href="/admin/previousNews?id=${news.newsId}" class="back">Back</a>
+<a href="/client?command=getNewsList" class="back">Back</a>
 
 <div class="cont">
     <div class="title">
@@ -39,8 +40,7 @@
             </div>
     </c:forEach>
     <div class="text-area">
-        <textarea name="comment" form="postComment" rows="4" cols="80">
-        </textarea>
+        <textarea name="comment" form="postComment" rows="4" cols="80" required></textarea>
     </div>
 
     <form id="postComment" action="/client?command=postComment" method="post">
@@ -51,8 +51,8 @@
     </form>
 
     <div>
-        <a href="/admin/previousNews?id=${news.newsId}" class="previous">Previous</a>
-        <a href="/admin/nextNews?id=${news.newsId}" class="next">Next</a>
+        <a href="/client?command=getPreviousNews&id=${news.newsId}" class="previous">Previous</a>
+        <a href="/client?command=getNextNews&id=${news.newsId}" class="next">Next</a>
     </div>
 </div>
 </body>

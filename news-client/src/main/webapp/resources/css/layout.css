@@ -9,6 +9,7 @@ body {
     padding-right: 10%;
     border: 1px groove ;
     display: inline-block;
+    width: 70%;
 }
 .title {
     max-width: 100px;

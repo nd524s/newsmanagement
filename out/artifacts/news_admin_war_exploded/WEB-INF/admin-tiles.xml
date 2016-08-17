@@ -10,6 +10,11 @@
         <put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
     </definition>
 
+    <definition name="login" extends="news">
+        <put-attribute name="sidebar" value=""/>
+        <put-attribute name="body" value="/WEB-INF/views/body/login.jsp"/>
+    </definition>
+
     <definition name="newsList" extends="news">
         <put-attribute name="body" value="/WEB-INF/views/body/newsList.jsp"/>
     </definition>

@@ -20,7 +20,7 @@
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 </head>
 <body>
-<form id="filterForm" action="/client/search" method="post">
+<form id="filterForm" action="/client?command=search" method="post">
     <div>
         <select id="authors" name="author" class="dropdown-position">
             <option value="">--Authors--</option>

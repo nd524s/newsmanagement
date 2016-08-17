@@ -4,3 +4,4 @@ com\epam\newsmanagement\controller\AddNewsController.class
 com\epam\newsmanagement\controller\AuthorListController.class
 com\epam\newsmanagement\controller\NewsListController.class
 com\epam\newsmanagement\controller\ViewNewsController.class
+com\epam\newsmanagement\controller\LoginController.class

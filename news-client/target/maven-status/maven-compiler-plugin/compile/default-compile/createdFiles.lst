@@ -1,6 +1,11 @@
-com\epam\newsmanagement\command\ActionFactory.class
+com\epam\newsmanagement\command\SearchCommand.class
+com\epam\newsmanagement\command\GetPreviousNewsCommand.class
+com\epam\newsmanagement\util\ResourceManager.class
+com\epam\newsmanagement\command\PostCommentCommand.class
 com\epam\newsmanagement\controller\UserController.class
 com\epam\newsmanagement\command\ActionCommand.class
 com\epam\newsmanagement\listener\ContextListener.class
 com\epam\newsmanagement\command\GetSingleNewsCommand.class
+com\epam\newsmanagement\command\ActionFactory.class
+com\epam\newsmanagement\command\GetNextNewsCommand.class
 com\epam\newsmanagement\command\GetNewsListCommand.class
